@@ -1,10 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import { PassengerSearch, DriverSearch, Home } from '/components'
-import t from 'tcomb-form-native';
-
-const Form = t.form.Form;
+import { PassengerSearch, DriverSearch, Home } from './components';
 
 
 
@@ -35,16 +32,16 @@ const RootNavigator = StackNavigator({
   Main: {
       screen: Home,
       navigationOptions: {
-        headerTitle: 'Home',
+        headerTitle: 'Home'
       }
   },
-  MyLists: {
+  Passenger: {
     screen: PassengerSearch,
     navigationOptions: {
       headerTitle: 'I am a driver and I need some riders!!'
     }
   },
-  Books: {
+  DriverSearch: {
     screen: DriverSearch,
     navigationOptions: {
       headerTitle: 'I am a passenger and I need someone to drive me!!'
