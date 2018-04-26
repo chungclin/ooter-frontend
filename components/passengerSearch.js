@@ -1,51 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-// import { PassengerSearch, DriverSearch, Home } from './components'
+import { DriverSearch, Home, GooglePlacesInput } from './'
 import t from 'tcomb-form-native';
-
-const Form = t.form.Form;
-
-const Driver = t.struct({
-    email: t.String,
-    phoneNumber: t.String,
-    origin: t.String,
-    originRadius: t.Number,
-    destination: t.String,
-    destinationRadius: t.Number
-  });
-  
-
-export default class App extends React.Component {
-    constructor(props){
-        super(props)
-    
-      }
-    
-    handleSubmit() {
-        const value = this._form.getValue(); // use that ref to get the form value
-        console.log('value: ', value)
-    }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.paragraph}>Find some riders for my car</Text>
-        
-        <Text style={styles.paragraph}>I'm Rider looking for a DRIVER for my trip</Text>
-        <Form 
-        type={Driver} 
-        ref={c => this._form = c}
-        options={options}
-        />
-        <Button
-          title="Submit"
-          onPress={this.handleSubmit}
-        />
-      </View>
-    );
-  }
-}
 
 const options = {
   fields: {
@@ -79,6 +36,57 @@ const styles = StyleSheet.create({
       color: '#34495e',
     }
   });
+
+const Form = t.form.Form;
+
+const Driver = t.struct({
+    email: t.String,
+    phoneNumber: t.String,
+    origin: t.String,
+    originRadius: t.Number,
+    destination: t.String,
+    destinationRadius: t.Number
+  });
+  
+
+export default class PassengerSearch extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            destination: {}, 
+            origin: {}
+        }
+        }
+    
+    handleSubmit = () => {
+        const value = this._form.getValue(); // use that ref to get the form value
+        console.log('value: ', value)
+    }
+
+  render() {
+    return (
+      <View style={styles.container}>
+      <Button onPress={() => navigation.navigate('Home')} title="Home" />
+      
+      <ScrollView>
+        <Text style={styles.paragraph}>Find some riders for my car</Text>
+        
+        <Text style={styles.paragraph}>I'm Rider looking for a DRIVER for my trip</Text>
+        <Form 
+        type={Driver} 
+        ref={c => this._form = c}
+        options={options}
+        />
+        <Button
+          title="Submit"
+          onPress={this.handleSubmit}
+        />
+    </ScrollView>
+      </View>
+    );
+  }
+}
+
 
 
 // export default class App extends React.Component {
