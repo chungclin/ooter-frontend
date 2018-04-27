@@ -62,9 +62,7 @@ const Driver = t.struct({
     name: t.String,
     email: t.String,
     phoneNumber: t.String,
-    origin: t.String,
     originRadius: OriginRadius, //t.Number
-    destination: t.String,
     destinationRadius: DestinationRadius
   });
   
@@ -80,18 +78,39 @@ export default class PassengerSearch extends React.Component {
             name: '',
             email: '',
             phoneNumber: '',
+            originLAT: '',
+            originLONG: '',
+            originAddress: '',
             originRadius: '',
+            destinationLAT: '',
+            destinationLONG: '',
+            destinationAddress: '',
             destinationRadius: ''
         }
+        this.handleSubmit = this.handleSubmit.bind(this)
+
+    }
+    
+    
+    setOriginAddress = (originLAT, originLONG, originAddress) => {
+        this._origin = { originLAT, originLONG, originAddress }
+    }
+    
+    setDestinationAddress = (destinationLAT, destinationLONG, destinationAddress) => {
+        this._destination = { destinationLAT, destinationLONG, destinationAddress }
+        console.log(this.setDestinationAddress, 'destination');
     }
     
     handleSubmit = () => {
         const value = this._form.getValue(); // use that ref to get the form value
         console.log('value: ', value)
-        axios.post('http://localhost:8080/api/driver/origin-coordinates', value)
-        .then(res => res.data)
-        .catch(err => console.error(err));
-    }
+        const payload = Object.assign({}, value, this._origin, this._destination);
+        console.log(this._origin, 'invoked')
+        console.log(payload, 'lalalal');
+        axios.post('http://localhost:8080/api/driver/origin-coordinates', payload)
+            .then(res => res.data)
+            .catch(err => console.error(err));
+        }
 
   render() {
     return (
@@ -101,9 +120,9 @@ export default class PassengerSearch extends React.Component {
       <ScrollView>
         <Text style={styles.paragraph}>Find some riders for my car</Text>
         <Text style={styles.paragraph}>What is your ORIGIN ADDRESS?</Text>
-        <GooglePlacesInputOriginAsADriver />
+        <GooglePlacesInputOriginAsADriver setAddress={this.setOriginAddress} />
         <Text style={styles.paragraph}>What is your DESTINATION ADDRESS?</Text>
-        <GooglePlacesInputDestinationAsADriver /> 
+        <GooglePlacesInputDestinationAsADriver setAddress={this.setDestinationAddress} /> 
         <Text style={styles.paragraph}>I'm Rider looking for a DRIVER for my trip</Text>
         <Form 
         type={Driver} 

@@ -4,10 +4,11 @@ import axios from 'axios';
 import { View, Image } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
  
-const GooglePlacesInputOriginAsARider = () => (
+const GooglePlacesInputOriginAsARider = ({ setOriginAddress }) => (
+
     <GooglePlacesAutocomplete
     textInputProps={{
-      onChangeText: (text) => { console.log(text)},
+      onChangeText: (text) => { console.log(text)}
   }}
       placeholder='Search'
       minLength={2} // minimum length of text to search
@@ -16,16 +17,17 @@ const GooglePlacesInputOriginAsARider = () => (
       listViewDisplayed='auto'    // true/false/undefined
       fetchDetails={true}
       renderDescription={(row) => row.description} // custom description render
-      onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
+      onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true      
         console.log(data);
         console.log(details, 'spost to backend with axios call with details.geometry.location.long or lat')
-        const originLAT = details.geometry.location.lat
-        const originLONG = details.geometry.location.lng
-        const originAddress = data.description
-        const payload = { originLAT, originLONG, originAddress }
-        axios.post('http://localhost:8080/api/passenger/origin-coordinates', payload)
-          .then(res => res.data)
-          .catch(err => console.error(err));
+        setOriginAddress(details.location.lat, details.location.lng, data.description)
+        // const originLAT = details.geometry.location.lat
+        // const originLONG = details.geometry.location.lng
+        // const originAddress = data.description
+        // const payload = { originLAT, originLONG, originAddress }
+        // axios.post('http://localhost:8080/api/passenger/origin-coordinates', payload)
+        //   .then(res => res.data)
+        //   .catch(err => console.error(err));
       }}
       getDefaultValue={() => {
         return ''; // text input default value
