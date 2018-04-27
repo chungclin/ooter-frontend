@@ -23,10 +23,9 @@ const GooglePlacesInputOriginAsARider = () => (
         const originLONG = details.geometry.location.lng
         const originAddress = data.description
         const payload = { originLAT, originLONG, originAddress }
-        axios.post('http://192.168.0.104:8080/api/passenger/origin-coordinates', payload)
+        axios.post('http://localhost:8080/api/passenger/origin-coordinates', payload)
           .then(res => res.data)
           .catch(err => console.error(err));
-        
       }}
       getDefaultValue={() => {
         return ''; // text input default value
@@ -46,9 +45,9 @@ const GooglePlacesInputOriginAsARider = () => (
         }
       }}
  
-      currentLocation={true} // Will add a 'Current location' button at the top of the predefined places list
-      currentLocationLabel="Current location"
-      nearbyPlacesAPI='GooglePlacesSearch' // Which API to use: GoogleReverseGeocoding or GooglePlacesSearch
+      // currentLocation={true} // Will add a 'Current location' button at the top of the predefined places list
+      // currentLocationLabel="Current location"
+      // nearbyPlacesAPI='GooglePlacesSearch' // Which API to use: GoogleReverseGeocoding or GooglePlacesSearch
       GoogleReverseGeocodingQuery={{
         // available options for GoogleReverseGeocoding API : https://developers.google.com/maps/documentation/geocoding/intro
       }}

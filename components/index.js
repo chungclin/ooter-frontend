@@ -5,4 +5,5 @@ export { default as GooglePlacesInputDestinationAsARider } from './googlePlacesA
 export { default as GooglePlacesInputOriginAsARider } from './googlePlacesAutoCompleteOriginAsARider';
 export { default as GooglePlacesInputDestinationAsADriver } from './googlePlacesAutoCompleteDestinationAsADriver';
 export { default as GooglePlacesInputOriginAsADriver } from './googlePlacesAutoCompleteOriginAsADriver';
+export { default as Results } from './results'
 

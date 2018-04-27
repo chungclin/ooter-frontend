@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
 
 const Home = ({navigation}) => (
   <View>
+  <Button onPress={() => navigation.navigate('Ooter Home')} title="Home" />
   <Text style={styles.paragraph}>Welcome to OOTER!!! A simple carpool app that matches drivers and passengers/riders based on their origin and destination</Text>
         
   <Text style={styles.paragraph}>I'm RIDER looking for a DRIVER for my trip</Text>
@@ -29,7 +30,6 @@ const Home = ({navigation}) => (
   <Text style={styles.paragraph}>I'm a DRIVER looking for RIDERS for my trip</Text>
   <Button onPress={() => navigation.navigate('PassengerSearch')} title="Rider Search" />
 
-  <Button onPress={() => navigation.navigate('Home')} title="Home" />
   </View>
 )
 
