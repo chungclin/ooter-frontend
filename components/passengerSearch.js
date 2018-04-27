@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import { DriverSearch, Home, GooglePlacesInput } from './'
+import { DriverSearch, Home, GooglePlacesInputDestinationAsADriver, GooglePlacesInputOriginAsADriver } from './'
 import t from 'tcomb-form-native';
 
 const options = {
@@ -48,15 +48,18 @@ const Driver = t.struct({
     destinationRadius: t.Number
   });
   
-
+//passengersearchposts to passenger
 export default class PassengerSearch extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            destination: {}, 
-            origin: {}
+            name: '',
+            email: '',
+            phoneNumber: '',
+            originRadius: '',
+            destinationRadius: ''
         }
-        }
+    }
     
     handleSubmit = () => {
         const value = this._form.getValue(); // use that ref to get the form value
@@ -70,7 +73,10 @@ export default class PassengerSearch extends React.Component {
       
       <ScrollView>
         <Text style={styles.paragraph}>Find some riders for my car</Text>
-        
+        <Text>destination</Text>
+        <GooglePlacesInputDestinationAsADriver /> 
+        <Text>origin</Text>
+        <GooglePlacesInputOriginAsADriver />
         <Text style={styles.paragraph}>I'm Rider looking for a DRIVER for my trip</Text>
         <Form 
         type={Driver} 
@@ -146,18 +152,3 @@ export default class PassengerSearch extends React.Component {
 //   },
 // };
 
-// const styles = StyleSheet.create({
-//     container: {
-//       justifyContent: 'center',
-//       marginTop: 50,
-//       padding: 20,
-//       backgroundColor: '#ffffff',
-//     },
-//     paragraph: {
-//       margin: 24,
-//       fontSize: 18,
-//       fontWeight: 'bold',
-//       textAlign: 'center',
-//       color: '#34495e',
-//     },
-//   });

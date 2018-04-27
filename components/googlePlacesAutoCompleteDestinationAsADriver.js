@@ -1,11 +1,14 @@
 import React from 'react';
+import axios from 'axios';
+
 import { View, Image } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
  
-const GooglePlacesInput = (state) => {
-
-return (
+const GooglePlacesInputOriginAsAPassenger = () => (
     <GooglePlacesAutocomplete
+    textInputProps={{
+      onChangeText: (text) => { console.log(text) },
+  }}
       placeholder='Search'
       minLength={2} // minimum length of text to search
       autoFocus={false}
@@ -15,7 +18,15 @@ return (
       renderDescription={(row) => row.description} // custom description render
       onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
         console.log(data);
-        console.log(details);
+        console.log(details, 'post to backend with axios call with details.geometry.location.long or lat')
+        const destinationLAT = details.geometry.location.lat
+        const destinationLONG = details.geometry.location.lng
+        const destinationAddress = data.description
+        const payload = { destinationLAT, destinationLONG, destinationAddress }
+        axios.post('http://192.168.0.104:8080/api/driver/origin-coordinates', payload)
+          .then(res => res.data)
+          .catch(err => console.error(err));
+        
       }}
       getDefaultValue={() => {
         return ''; // text input default value
@@ -50,10 +61,6 @@ return (
       filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']} // filter the reverse geocoding results by types - ['locality', 'administrative_area_level_3'] if you want to display only cities 
       debounce={200} // debounce the requests in ms. Set to 0 to remove debounce. By default 0ms.
     />
-    )
-}
+    );
 
-export default GooglePlacesInput;
-
-
-
+export default GooglePlacesInputOriginAsAPassenger;
