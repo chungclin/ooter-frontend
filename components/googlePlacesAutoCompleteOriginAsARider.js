@@ -4,7 +4,7 @@ import axios from 'axios';
 import { View, Image } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
  
-const GooglePlacesInputOriginAsARider = ({ setOriginAddress }) => (
+const GooglePlacesInputOriginAsARider = ({ setAddress }) => (
 
     <GooglePlacesAutocomplete
     textInputProps={{
@@ -19,8 +19,8 @@ const GooglePlacesInputOriginAsARider = ({ setOriginAddress }) => (
       renderDescription={(row) => row.description} // custom description render
       onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true      
         console.log(data);
-        console.log(details, 'spost to backend with axios call with details.geometry.location.long or lat')
-        setOriginAddress(details.location.lat, details.location.lng, data.description)
+        console.log(details, 'post to backend with axios call with details.geometry.location.long or lat')
+        setAddress(details.geometry.location.lat, details.geometry.location.lng, data.description)
         // const originLAT = details.geometry.location.lat
         // const originLONG = details.geometry.location.lng
         // const originAddress = data.description

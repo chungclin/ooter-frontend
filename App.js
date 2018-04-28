@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import { PassengerSearch, DriverSearch, Home } from './components';
+import { PassengerSearch, DriverSearch, Home, Results } from './components';
 
 
-const RootNavigator = StackNavigator({
-  Main: {
+const RootNavigator = StackNavigator(
+  {
+  Home: {
       screen: Home,
       navigationOptions: {
         headerTitle: 'Home'
@@ -14,16 +15,25 @@ const RootNavigator = StackNavigator({
   PassengerSearch: {
     screen: PassengerSearch,
     navigationOptions: {
-      headerTitle: 'I am a driver and I need some riders!!'
+      headerTitle: 'I am a driver and I need passengers!!'
     }
   },
   DriverSearch: {
     screen: DriverSearch,
     navigationOptions: {
-      headerTitle: 'I am a passenger and I need someone to drive me!!'
+      headerTitle: 'I am a passenger and I need drivers!!'
+    }
+  },
+  Results: {
+    screen: Results,
+    navigationOptions: {
+      headerTitle: 'Here are your results'
     }
   }
-});
+}
+);
 
 export default RootNavigator;
+
+
 

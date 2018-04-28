@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 const Home = ({navigation}) => (
   <View>
   <Button onPress={() => navigation.navigate('Ooter Home')} title="Home" />
-  <Text style={styles.paragraph}>Welcome to OOTER!!! A simple carpool app that matches drivers and passengers/riders based on their origin and destination</Text>
+  <Text style={styles.paragraph}>Welcome to OOTER!!! {"\n"} A simple carpool app that matches drivers and passengers/riders based on similar origin and destination</Text>
         
   <Text style={styles.paragraph}>I'm RIDER looking for a DRIVER for my trip</Text>
   <Button onPress={() => navigation.navigate('DriverSearch')} title="Driver Search" />

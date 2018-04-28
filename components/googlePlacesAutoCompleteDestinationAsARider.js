@@ -3,7 +3,7 @@ import axios from 'axios';
 import { View, Image } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
  
-const GooglePlacesInputDestinationAsARider = ({ setDestinationAddress }) => {
+const GooglePlacesInputDestinationAsARider = ({ setAddress }) => {
 
 return (
     <GooglePlacesAutocomplete
@@ -20,16 +20,7 @@ return (
       onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
         console.log(data);
         console.log(details, 'post to backend with axios call with details.geometry.location.long or lat')
-        setDestinationAddress(details.geometry.location.lat, details.geometry.location.lng, data.description)
-        // const destinationLAT = details.geometry.location.lat
-        // const destinationLONG = details.geometry.location.lng
-        // const destinationAddress = data.description
-        // const payload = { destinationLAT, destinationLONG, destinationAddress }
-        // axios.post('http://172.16.23.77:8080/api/passenger/origin-coordinates', payload)
-        
-        // // 192.168.0.104:8080
-        //   .then(res => res.data)
-        //   .catch(err => console.error(err));
+        setAddress(details.geometry.location.lat, details.geometry.location.lng, data.description)
       }}
       getDefaultValue={() => {
         return ''; // text input default value

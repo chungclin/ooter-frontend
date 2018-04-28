@@ -18,9 +18,8 @@ const GooglePlacesInputOriginAsAPassenger = ({ setAddress }) => (
       renderDescription={(row) => row.description} // custom description render
       onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
         console.log(data);
-        console.log(details, 'spost to backend with axios call with details.geometry.location.long or lat')
+        console.log(details, 'post to backend with axios call with details.geometry.location.long or lat')
         setAddress(details.geometry.location.lat, details.geometry.location.lng, data.description)
-        
       }}
       getDefaultValue={() => {
         return ''; // text input default value
@@ -40,8 +39,8 @@ const GooglePlacesInputOriginAsAPassenger = ({ setAddress }) => (
         }
       }}
  
-    //   currentLocation={true} // Will add a 'Current location' button at the top of the predefined places list
-    //   currentLocationLabel="Current location"
+      // currentLocation={true} // Will add a 'Current location' button at the top of the predefined places list
+      // currentLocationLabel="Current location"
       nearbyPlacesAPI='GooglePlacesSearch' // Which API to use: GoogleReverseGeocoding or GooglePlacesSearch
       GoogleReverseGeocodingQuery={{
         // available options for GoogleReverseGeocoding API : https://developers.google.com/maps/documentation/geocoding/intro
