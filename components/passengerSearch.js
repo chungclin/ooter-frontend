@@ -91,7 +91,7 @@ export default class PassengerSearch extends React.Component {
         const value = this._form.getValue(); // use that ref to get the form value
         console.log('value: ', value);
         const payload = Object.assign({}, value, this._origin, this._destination);
-        axios.post('http://localhost:8080/api/passenger', payload)
+        axios.post('http://localhost:8080/api/driver', payload)
             .then(res => res.data)
             .then(data => {
                 this.setState({ data });
