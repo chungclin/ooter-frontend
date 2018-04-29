@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Button, FlatList, ScrollView } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 
@@ -37,6 +37,7 @@ export default function Results(props) {
       <Text style={styles.paragraph}>Here are your results</Text>
       { !data.length ? <Text>Your search return no matches</Text>
         :
+        <ScrollView>
       <FlatList
       data={data}
       keyExtractor={item => item.id.toString()}
@@ -52,6 +53,8 @@ export default function Results(props) {
         </Text>
       )}
       />
+      <Button onPress={() => navigate('GoogleMap')} title="Map" />
+      </ScrollView>
     }
       </View>
     );

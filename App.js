@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import { PassengerSearch, DriverSearch, Home, Results } from './components';
+import { PassengerSearch, DriverSearch, Home, Results, GoogleMap } from './components';
 
 
 const RootNavigator = StackNavigator(
@@ -28,6 +28,12 @@ const RootNavigator = StackNavigator(
     screen: Results,
     navigationOptions: {
       headerTitle: 'Here are your results'
+    }
+  },
+  GoogleMap: {
+    screen: GoogleMap,
+    navigationOptions: {
+      headerTitle: 'Map View of your results'
     }
   }
 }

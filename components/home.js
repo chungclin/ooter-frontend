@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const Home = ({navigation}) => (
+const Home = ({ navigation }) => (
   <View>
   <Button onPress={() => navigation.navigate('Ooter Home')} title="Home" />
   <Text style={styles.paragraph}>Welcome to OOTER!!! {"\n"} A simple carpool app that matches drivers and passengers/riders based on similar origin and destination</Text>
