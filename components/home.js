@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 // import { PassengerSearch, DriverSearch, Home } from './components'
 
@@ -21,14 +21,16 @@ const styles = StyleSheet.create({
 
 const Home = ({navigation}) => (
   <View>
-  <Button onPress={() => navigation.navigate('Ooter Home')} title="Home" />
-  <Text style={styles.paragraph}>Welcome to OOTER!!! {"\n"} A simple carpool app that matches drivers and passengers/riders based on similar origin and destination</Text>
+  <Text style={styles.paragraph}>
+  <Image style={{ width: 100, height: 100 }} source={{uri: 'https://i.pinimg.com/originals/03/6f/70/036f70cede88f3d8dd96d5cfa92c6ccf.jpg'}} />
+  Welcome to OOTER!!! {"\n"} A simple carpool app that matches drivers and passengers/riders based on similar origin and destination
+  </Text>
         
   <Text style={styles.paragraph}>I'm RIDER looking for a DRIVER for my trip</Text>
-  <Button onPress={() => navigation.navigate('DriverSearch')} title="Driver Search" />
+  <Button onPress={() => navigation.navigate('DriverSearch')} title="Search for Drivers" />
 
   <Text style={styles.paragraph}>I'm a DRIVER looking for RIDERS for my trip</Text>
-  <Button onPress={() => navigation.navigate('PassengerSearch')} title="Rider Search" />
+  <Button onPress={() => navigation.navigate('PassengerSearch')} title="Search for Riders" />
 
   </View>
 )
