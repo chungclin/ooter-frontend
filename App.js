@@ -15,13 +15,13 @@ const RootNavigator = StackNavigator(
   PassengerSearch: {
     screen: PassengerSearch,
     navigationOptions: {
-      headerTitle: 'I am a driver and I need passengers!!'
+      headerTitle: 'I am a driver and I need riders!!'
     }
   },
   DriverSearch: {
     screen: DriverSearch,
     navigationOptions: {
-      headerTitle: 'I am a passenger and I need drivers!!'
+      headerTitle: 'I am a rider and I need drivers!!'
     }
   },
   Results: {

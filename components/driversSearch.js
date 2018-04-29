@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { PassengerSearch, Home, GooglePlacesInputDestinationAsARider, GooglePlacesInputOriginAsARider, Results } from './';
 import t from 'tcomb-form-native';
 
@@ -103,23 +104,29 @@ export default class DriverSearch extends React.Component {
 
     return (
       <View>
+      <KeyboardAwareScrollView
+      resetScrollToCoords={{ x: 0, y: 0 }}
+      scrollEnabled={true}
+      >
       <Button title="Home" onPress={() => navigate('Home')} />
       <ScrollView>
         <Text style={styles.paragraph}>I'm a RIDER looking for a DRIVER for my trip</Text>
-        <Text style={styles.paragraph}>What is your ORIGIN ADDRESS?</Text>
+        <Text style={styles.paragraph}>Origin Address</Text>
         <GooglePlacesInputOriginAsARider setAddress={this.setOriginAddress} />
         <Form 
         type={Passenger} 
         ref={c => this._form = c}
         options={options}
         />
-        <Text style={styles.paragraph}>What is your DESTINATION ADDRESS?</Text>
+        <Text style={styles.paragraph}>Destination Address</Text>
         <GooglePlacesInputDestinationAsARider setAddress={this.setDestinationAddress} /> 
         <Button
           title="Submit"
           onPress={this.handleSubmit}
         />
     </ScrollView>
+    </KeyboardAwareScrollView>
+
       </View>
     );
   }
