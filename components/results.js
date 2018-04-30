@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { Button } from 'react-native-elements'
 import { StackNavigator } from 'react-navigation';
 
 

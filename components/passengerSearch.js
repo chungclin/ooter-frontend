@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { Button } from 'react-native-elements'
 import { StackNavigator } from 'react-navigation';
 import { Home, GooglePlacesInputDestinationAsADriver, GooglePlacesInputOriginAsADriver } from './';
 import t from 'tcomb-form-native';
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
       fontSize: 18,
       fontWeight: 'bold',
       textAlign: 'center',
-      color: '#34495e',
+      color: '#000000',
     }
   });
 
