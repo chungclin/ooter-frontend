@@ -1,7 +1,9 @@
 import React from 'react';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
  
-const GooglePlacesInputOriginAsAPassenger = ({ setAddress }) => (
+const GooglePlacesInputDestination = ({ setAddress }) => {
+
+return (
     <GooglePlacesAutocomplete
     textInputProps={{
       onChangeText: (text) => { console.log(text) },
@@ -15,8 +17,8 @@ const GooglePlacesInputOriginAsAPassenger = ({ setAddress }) => (
       renderDescription={(row) => row.description} // custom description render
       onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
         console.log(data);
+        console.log(details, 'post to backend with axios call with details.geometry.location.long or lat')
         setAddress(details.geometry.location.lat, details.geometry.location.lng, data.description)
-        
       }}
       getDefaultValue={() => {
         return ''; // text input default value
@@ -48,6 +50,7 @@ const GooglePlacesInputOriginAsAPassenger = ({ setAddress }) => (
       filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']} // filter the reverse geocoding results by types - ['locality', 'administrative_area_level_3'] if you want to display only cities 
       debounce={200} // debounce the requests in ms. Set to 0 to remove debounce. By default 0ms.
     />
-    );
+    )
+};
 
-export default GooglePlacesInputOriginAsAPassenger;
+export default GooglePlacesInputDestination;

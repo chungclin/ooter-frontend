@@ -1,10 +1,11 @@
 import React from 'react';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
  
-const GooglePlacesInputOriginAsAPassenger = ({ setAddress }) => (
+const GooglePlacesInputOrigin = ({ setAddress }) => (
+
     <GooglePlacesAutocomplete
     textInputProps={{
-      onChangeText: (text) => { console.log(text) },
+      onChangeText: (text) => { console.log(text)}
   }}
       placeholder='Search'
       minLength={2} // minimum length of text to search
@@ -13,9 +14,8 @@ const GooglePlacesInputOriginAsAPassenger = ({ setAddress }) => (
       listViewDisplayed='auto'    // true/false/undefined
       fetchDetails={true}
       renderDescription={(row) => row.description} // custom description render
-      onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
+      onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true      
         console.log(data);
-        console.log(details, 'post to backend with axios call with details.geometry.location.long or lat')
         setAddress(details.geometry.location.lat, details.geometry.location.lng, data.description)
       }}
       getDefaultValue={() => {
@@ -35,7 +35,6 @@ const GooglePlacesInputOriginAsAPassenger = ({ setAddress }) => (
           color: '#1faadb'
         }
       }}
-      nearbyPlacesAPI='GooglePlacesSearch' // Which API to use: GoogleReverseGeocoding or GooglePlacesSearch
       GoogleReverseGeocodingQuery={{
         // available options for GoogleReverseGeocoding API : https://developers.google.com/maps/documentation/geocoding/intro
       }}
@@ -48,6 +47,7 @@ const GooglePlacesInputOriginAsAPassenger = ({ setAddress }) => (
       filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']} // filter the reverse geocoding results by types - ['locality', 'administrative_area_level_3'] if you want to display only cities 
       debounce={200} // debounce the requests in ms. Set to 0 to remove debounce. By default 0ms.
     />
-    );
 
-export default GooglePlacesInputOriginAsAPassenger;
+);
+
+export default GooglePlacesInputOrigin;
