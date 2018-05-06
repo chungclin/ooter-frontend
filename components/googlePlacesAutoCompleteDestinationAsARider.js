@@ -1,6 +1,4 @@
 import React from 'react';
-import axios from 'axios';
-import { View, Image } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
  
 const GooglePlacesInputDestinationAsARider = ({ setAddress }) => {
@@ -39,9 +37,6 @@ return (
           color: '#1faadb'
         }
       }}
- 
-      // currentLocation={true} // Will add a 'Current location' button at the top of the predefined places list
-      // currentLocationLabel="Current location"
       nearbyPlacesAPI='GooglePlacesSearch' // Which API to use: GoogleReverseGeocoding or GooglePlacesSearch
       GoogleReverseGeocodingQuery={{
         // available options for GoogleReverseGeocoding API : https://developers.google.com/maps/documentation/geocoding/intro
@@ -55,8 +50,8 @@ return (
       filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']} // filter the reverse geocoding results by types - ['locality', 'administrative_area_level_3'] if you want to display only cities 
       debounce={200} // debounce the requests in ms. Set to 0 to remove debounce. By default 0ms.
     />
-    )
-}
+    );
+};
 
 export default GooglePlacesInputDestinationAsARider;
 

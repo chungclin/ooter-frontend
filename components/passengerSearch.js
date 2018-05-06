@@ -75,10 +75,7 @@ export default class PassengerSearch extends React.Component {
 
   constructor() {
     super();
-    this.state = {
-        data: []
-    
-    };
+
   }
     
     setOriginAddress = (originLAT, originLONG, originAddress) => {

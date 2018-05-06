@@ -74,9 +74,6 @@ export default class DriverSearch extends React.Component {
 
     constructor() {
         super();
-        this.state = {
-            data: []
-        };
     }
 
     setOriginAddress = (originLAT, originLONG, originAddress) => {
