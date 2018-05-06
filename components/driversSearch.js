@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { Button } from 'react-native-elements'
 import { StackNavigator } from 'react-navigation';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { PassengerSearch, Home, GooglePlacesInputDestinationAsARider, GooglePlacesInputOriginAsARider, Results } from './';
+import { GooglePlacesInputDestination, GooglePlacesInputOrigin, Results } from './';
 import t from 'tcomb-form-native';
 
 const options = {
@@ -74,9 +74,6 @@ export default class DriverSearch extends React.Component {
 
     constructor() {
         super();
-        this.state = {
-            data: []
-        };
     }
 
     setOriginAddress = (originLAT, originLONG, originAddress) => {
@@ -113,7 +110,7 @@ export default class DriverSearch extends React.Component {
       <ScrollView>
         <Text style={styles.paragraph}>I'm a RIDER looking for a DRIVER for my trip</Text>
         <Text style={styles.paragraph}>Origin Address</Text>
-        <GooglePlacesInputOriginAsARider setAddress={this.setOriginAddress} />
+        <GooglePlacesInputOrigin setAddress={this.setOriginAddress} />
         <Form
         fontFamiy="Optima" 
         type={Passenger} 
@@ -121,7 +118,7 @@ export default class DriverSearch extends React.Component {
         options={options}
         />
         <Text style={styles.paragraph}>Destination Address</Text>
-        <GooglePlacesInputDestinationAsARider setAddress={this.setDestinationAddress} /> 
+        <GooglePlacesInputDestination setAddress={this.setDestinationAddress} /> 
         <Button
           title="Submit"
           onPress={this.handleSubmit}
